@@ -1,5 +1,5 @@
 # Build_a_Personal_Portfolio_Website
-A fully responsive personal portfolio website built with HTML5 and CSS3, featuring a modern UI, project showcase grid, and vibrant gradient themes.
+A responsive single-page application designed using semantic HTML5 and advanced CSS3 (Flexbox/Grid) to showcase web development projects and skills.
 
 📍 Overview
 This project represents the successful completion of **Task 4 (Build a Personal Portfolio Website)**. The goal was to combine HTML structure with advanced CSS styling to create a professional online presence.
