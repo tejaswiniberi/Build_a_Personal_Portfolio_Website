@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Tejaswini.Beri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS VARIABLES FOR COLORS --- */
+        :root {
+            /* Updated Gradients to be slightly more feminine/vibrant if desired, or kept consistent */
+            --primary-gradient: linear-gradient(135deg, #FF9A9E, #FECFEF);
+            --accent-gradient: linear-gradient(to right, #fc00ff, #00dbde);
+            --text-dark: #2d3436;
+            --text-light: #636e72;
+            --bg-light: #f9f9f9;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d900ff;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative blobs in background */
+        .blob {
+            position: absolute;
+            filter: blur(50px);
+            z-index: 0;
+            opacity: 0.4;
+        }
+        .blob-1 { top: -50px; left: -50px; width: 300px; height: 300px; background: #FF9A9E; border-radius: 50%; }
+        .blob-2 { bottom: -50px; right: -50px; width: 400px; height: 400px; background: #00dbde; border-radius: 50%; }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .profile-img-wrapper {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            padding: 5px;
+            background: var(--accent-gradient); /* Colorful border ring */
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            background-color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            line-height: 1.2;
+            color: var(--text-dark);
+        }
+
+        .hero h1 span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-top: 20px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 35px;
+            background: var(--accent-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 219, 222, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 219, 222, 0.6);
+        }
+
+        /* --- PROJECTS SECTION --- */
+        section { padding: 80px 20px; max-width: 1200px; margin: auto; }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-gradient);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s ease;
+            position: relative;
+            top: 0;
+        }
+
+        .card:hover {
+            top: -10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .card-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .card-tag {
+            background: #e0e6ed;
+            color: #555;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .card h3 { margin: 10px 0; font-size: 1.5rem; }
+        .card p { color: var(--text-light); line-height: 1.6; }
+
+        .card-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #fc00ff;
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+        
+        .card-link:hover { border-bottom-color: #fc00ff; }
+
+        /* --- CONTACT SECTION --- */
+        #contact {
+            background: white;
+            border-radius: 30px;
+            box-shadow: var(--card-shadow);
+            padding: 60px;
+            margin-bottom: 80px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        input, textarea {
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #eee;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #00dbde;
+        }
+
+        .submit-btn {
+            padding: 15px;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .submit-btn:hover { opacity: 0.9; }
+
+        footer {
+            background: #2d3436;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { flex-direction: column; gap: 20px; }
+            #contact { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">Tejaswini.Beri</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="home" class="hero">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        
+        <div class="hero-content">
+            <div class="profile-img-wrapper">
+                <img src="1.jpg" alt="Tejaswini.Beri" class="profile-img">
+            </div>
+            <h1>Hello, I'm <br><span>Tejaswini.Beri</span></h1>
+            <p>Creative Web Developer | UI/UX Enthusiast | Tech Lover</p>
+            <a href="#projects" class="cta-btn">View My Work</a>
+        </div>
+    </div>
+
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1557821552-17105176677c?w=600&q=80" alt="E-Commerce" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">Web Development</span>
+                    <h3>Digital Store</h3>
+                    <p>A colourful e-commerce platform built with modern web technologies featuring a custom cart and payment gateway.</p>
+                    <a href="#" class="card-link">See Details →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1592210454359-9043f53db363?w=600&q=80" alt="Weather App" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">API Integration</span>
+                    <h3>SkyCast Weather</h3>
+                    <p>Real-time weather tracking application with beautiful animated backgrounds and geolocation support.</p>
+                    <a href="#" class="card-link">See Details →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&q=80" alt="Task App" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">Productivity</span>
+                    <h3>Task Master</h3>
+                    <p>An intuitive to-do list application that helps users organize their day with local storage capabilities.</p>
+                    <a href="#" class="card-link">See Details →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Let's Connect</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email Address" required>
+            <textarea rows="5" placeholder="How can I help you?" required></textarea>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Designed with ❤️ by <strong>Tejaswini.Beri</strong></p>
+        <p>&copy; 2025 All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
